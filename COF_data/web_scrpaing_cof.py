@@ -6,10 +6,14 @@ import json
 costa_rica_2024_results_webpage = requests.get('https://allianceforcoffeeexcellence.org/costa-rica-2024/#coe-results')
 costa_rica_2024_soup = BeautifulSoup(costa_rica_2024_results_webpage.content, 'html.parser')
 
-costa_rica_dictionary = {}
+costa_rica_washed_dictionary = {}
+costa_rica_experimental_dictionary = {}
+costa_rica_natural_honey_dictionary = {}
 
 # Find the table
 cr_table_washed = costa_rica_2024_soup.find('table', class_='experimental mtr-table mtr-tr-td')
+cr_table_experimental = costa_rica_2024_soup.find('table', class_='redd mtr-table mtr-tr-td')
+cr_table_natural_honey = costa_rica_2024_soup.find('table', class_='dry mtr-table mtr-tr-td')
 
 # # Extract the headers and clean
 # washed_headers = [header.get_text(strip=True) for header in cr_table_washed.find('tr')]
@@ -42,8 +46,16 @@ def extract_data_from_table(soup_table, headers, dictionary):
             dictionary[headers[i]].append(cell_data)
     return
 
-washed_table_headers = headers_for_dictionary(cr_table_washed, costa_rica_dictionary)
-extract_data_from_table(cr_table_washed, washed_table_headers, costa_rica_dictionary)
+washed_table_headers = headers_for_dictionary(cr_table_washed, costa_rica_washed_dictionary)
+extract_data_from_table(cr_table_washed, washed_table_headers, costa_rica_washed_dictionary)
+
+experimental_table_headers = headers_for_dictionary(cr_table_experimental, costa_rica_experimental_dictionary)
+extract_data_from_table(cr_table_experimental, experimental_table_headers, costa_rica_experimental_dictionary)
+
+natural_honey_headers = headers_for_dictionary(cr_table_natural_honey, costa_rica_natural_honey_dictionary)
+extract_data_from_table(cr_table_natural_honey, natural_honey_headers, costa_rica_natural_honey_dictionary)
 
 
-print(costa_rica_dictionary)
+print(costa_rica_washed_dictionary)
+print(costa_rica_experimental_dictionary)
+print(costa_rica_natural_honey_dictionary)
