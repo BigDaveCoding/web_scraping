@@ -20,4 +20,11 @@ clean_washed_headers = [header for header in washed_headers if header != '']
 for i in range(0, len(clean_washed_headers)):
     costa_rica_dictionary[clean_washed_headers[i]] = []
 
-# print(costa_rica_dictionary)
+for row in cr_table_washed.find_all('tr')[1:]:
+    cells = row.find_all('td')
+    for i, cell in enumerate(cells):
+        cell_data = cell.find('div', class_='mtr-cell-content').get_text(strip=True)
+        costa_rica_dictionary[clean_washed_headers[i]].append(cell_data)
+
+
+print(costa_rica_dictionary)
