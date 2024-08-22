@@ -62,6 +62,7 @@ for key in costa_rica_washed_dictionary.keys():
     costa_rica_all_data_dict[key] = costa_rica_washed_dictionary[key] + costa_rica_experimental_dictionary[key] + costa_rica_natural_honey_dictionary[key]
 
 costa_rica_all_data_dict['COUNTRY'] = ['Costa Rica'] * len(next(iter(costa_rica_all_data_dict.values())))
+costa_rica_all_data_dict['YEAR'] = ['2024'] * len(next(iter(costa_rica_all_data_dict.values())))
 
 # print(costa_rica_all_data_dict)
 # print(costa_rica_washed_dictionary)
