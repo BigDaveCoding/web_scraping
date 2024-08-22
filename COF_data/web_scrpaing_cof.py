@@ -61,6 +61,8 @@ costa_rica_all_data_dict = {}
 for key in costa_rica_washed_dictionary.keys():
     costa_rica_all_data_dict[key] = costa_rica_washed_dictionary[key] + costa_rica_experimental_dictionary[key] + costa_rica_natural_honey_dictionary[key]
 
+costa_rica_all_data_dict['COUNTRY'] = ['Costa Rica'] * len(next(iter(costa_rica_all_data_dict.values())))
+
 # print(costa_rica_all_data_dict)
 # print(costa_rica_washed_dictionary)
 # print(costa_rica_experimental_dictionary)
@@ -71,6 +73,15 @@ with open('costa_rica_washed_table.csv', 'w', newline = '') as cr_table_washed:
     w.writeheader()
     rows = [dict(zip(costa_rica_washed_dictionary.keys(), t)) for t in zip(*costa_rica_washed_dictionary.values())]
     w.writerows(rows)
+
+with open('all_costa_rica_data_table.csv', 'w', newline='') as all_cr_data:
+    w = csv.DictWriter(all_cr_data, fieldnames=costa_rica_all_data_dict.keys())
+    w.writeheader()
+    rows = [dict(zip(costa_rica_all_data_dict.keys(), t)) for t in zip(*costa_rica_all_data_dict.values())]
+    w.writerows(rows)
+
+all_cr_df = pd.read_csv('all_costa_rica_data_table.csv')
+print(all_cr_df)
 
 df = pd.read_csv('costa_rica_washed_table.csv')
 # print(df)
