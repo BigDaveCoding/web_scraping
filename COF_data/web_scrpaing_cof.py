@@ -60,6 +60,10 @@ for key, values in costa_rica_all_auction_data_dict.items():
 # Dont need the company name data for the table so using .pop to remove key and values.
 costa_rica_all_auction_data_dict.pop('COMPANY NAME')
 
+def remove_invalid_data(_dictionary):
+    for key, values in _dictionary.items():
+        _dictionary[key] = [val for val in values if val != key]
+
 # Adding a key 'COUNTRY' and value of 'Costa Rica' to auction dictionary
 
 def add_table_dict_data(add_to_dictionary, key_list, data_list):
@@ -109,3 +113,43 @@ df = pd.read_csv('costa_rica_washed_table.csv')
 # print(df)
 
 # print(costa_rica_all_auction_data_dict)
+
+#using requests to get the webpage
+el_salvador_results_webpage = requests.get('https://allianceforcoffeeexcellence.org/el-salvador-2024/')
+# Turning webpage into Soup using html.parser
+el_salvador_soup = BeautifulSoup(el_salvador_results_webpage.content, 'html.parser')
+
+# Initializing dictionaires to store the data in
+el_salvador_all_results_dict = {}
+el_salvador_all_auction_dict = {}
+
+# Finding tables
+el_salvador_results_table = el_salvador_soup.find('div', id='coe-results')
+el_salvador_auction_table = el_salvador_soup.find('div', id='coe-auction-results')
+
+# Getting headers to store in the Key of dictionaries
+es_results_headers = headers_for_dictionary(el_salvador_results_table, el_salvador_all_results_dict)
+es_auction_headers = headers_for_dictionary(el_salvador_auction_table, el_salvador_all_auction_dict)
+
+# extracting data from tables to store in values of dictionaries
+extract_data_from_table(el_salvador_results_table, es_results_headers, el_salvador_all_results_dict)
+extract_data_from_table(el_salvador_auction_table, es_auction_headers, el_salvador_all_auction_dict)
+
+# Removing invalid values
+remove_invalid_data(el_salvador_all_results_dict)
+remove_invalid_data(el_salvador_all_auction_dict)
+
+# Removing 'COMPANY NAME' Key:value from auction dictionary
+el_salvador_all_auction_dict.pop('COMPANY NAME')
+
+# Adding extra data to tables
+add_table_dict_data(el_salvador_all_results_dict, ['CONTINENT', 'COUNTRY', 'YEAR'], ['North America (Central America)', 'El Salvador', '2024'])
+add_table_dict_data(el_salvador_all_auction_dict, ['COUNTRY', 'YEAR'], ['El Salvador', '2024'])
+
+# Writing data to csv file
+
+write_csv_file('el_salvador_results_table_2024.csv', el_salvador_all_results_dict)
+write_csv_file('el_salvador_auction_results_2024.csv', el_salvador_all_auction_dict)
+
+# print(el_salvador_all_results_dict) #Debugging
+# print(el_salvador_all_auction_dict) #Debugging
