@@ -154,10 +154,11 @@ write_csv_file('el_salvador_auction_results_2024.csv', el_salvador_all_auction_d
 # print(el_salvador_all_results_dict) #Debugging
 # print(el_salvador_all_auction_dict) #Debugging
 class Extract_All_Data:
-    def __init__(self, webpage_to_scrape_str, id_str):
+    def __init__(self, webpage_to_scrape_str, id_str, csv_str):
         self.webpage_to_scrape_str = webpage_to_scrape_str
         self.data_dictionary = {}
         self.id_str = id_str
+        self.csv_str = csv_str
     
     def create_soup(self):
         webpage = requests.get(self.webpage_to_scrape_str)
@@ -189,8 +190,27 @@ class Extract_All_Data:
     def clean_dictionary(self):
         for key, value in self.data_dictionary.items():
             self.data_dictionary[key] = [val for val in value if val != key]
+        if self.id_str == 'coe-auction-results':
+            self.data_dictionary.pop('COMPANY NAME')
+            self.data_dictionary.pop('BUYER')
+
+    def add_extra_data(self, key_list, value_list):
+        if key_list == [] and value_list == []:
+            return
+        for key, value in zip(key_list, value_list):
+            if key not in self.data_dictionary:
+                self.data_dictionary[key] = [value] * len(next(iter(self.data_dictionary.values())))
+            else:
+                self.data_dictionary[key].extend([value]) * len(next(iter(self.data_dictionary.values())))
+
+    def write_to_csv(self):
+        with open(self.csv_str, 'w', newline = '') as file:
+            w = csv.DictWriter(file, fieldnames=self.data_dictionary.keys())
+            w.writeheader()
+            rows = [dict(zip(self.data_dictionary.keys(), t)) for t in zip(*self.data_dictionary.values())]
+            w.writerows(rows)
     
-    def scrape(self):
+    def scrape(self, key_list, value_list):
         soup = self.create_soup()
         table = self.find_table(soup)
         if table:
@@ -198,9 +218,13 @@ class Extract_All_Data:
             if headers:
                 self.extract_data_from_table(table, headers)
         self.clean_dictionary()
+        self.add_extra_data(key_list, value_list)
+        self.write_to_csv()
         return self.data_dictionary
 
     
-guatemala_data = Extract_All_Data('https://allianceforcoffeeexcellence.org/guatemala-2024/#coe-results', 'coe-results')
-guatemala_results = guatemala_data.scrape()
+guatemala_data = Extract_All_Data('https://allianceforcoffeeexcellence.org/guatemala-2024/#coe-results', 'coe-results', 'guatemala_results_table_2024.csv')
+guatemala_results = guatemala_data.scrape(['COUNTRY', 'CONTINENT', 'YEAR'], ['Guatemala', 'North America (Central America)', '2024'])
+# guatemala_data.add_extra_data(['COUNTRY', 'CONTINENT', 'YEAR'], ['Guatemala', 'North America (Central America)', '2024'])
+
 print(guatemala_results)
