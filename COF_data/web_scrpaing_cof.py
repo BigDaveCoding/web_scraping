@@ -160,6 +160,10 @@ class Extract_All_Data:
         self.id_str = id_str
         self.csv_str = csv_str
     
+    def __repr__(self):
+        return 'Created a class in order to run through the functions to scrape the data from the tables of the different Cup Of Excellence \
+            results and auctions found throughout the website.'
+    
     def create_soup(self):
         webpage = requests.get(self.webpage_to_scrape_str)
         soup = BeautifulSoup(webpage.content, 'html.parser')
@@ -193,8 +197,6 @@ class Extract_All_Data:
         if self.id_str == 'coe-auction-results':
             self.data_dictionary.pop('COMPANY NAME')
         
-                
-
     def add_extra_data(self, key_list, value_list):
         if key_list == [] and value_list == []:
             return
