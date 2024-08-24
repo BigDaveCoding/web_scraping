@@ -73,7 +73,7 @@ natural_honey_headers = headers_for_dictionary(cr_table_natural_honey, costa_ric
 extract_data_from_table(cr_table_natural_honey, natural_honey_headers, costa_rica_natural_honey_dictionary)
 
 
-extract_data_from_table(cr_auction_table_washed,auction_washed_headers, costa_rica_all_auction_data_dict)
+extract_data_from_table(cr_auction_table_washed, auction_washed_headers, costa_rica_all_auction_data_dict)
 
 list_keys = list(costa_rica_all_auction_data_dict.keys())
 print(list_keys)
