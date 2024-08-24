@@ -24,19 +24,6 @@ cr_auction_table_washed = costa_rica_2024_soup.find('div', id='coe-auction-resul
 
 # print(cr_auction_table_washed)
 
-
-
-# print(cr_table_washed)
-
-
-# # Extract the headers and clean
-# washed_headers = [header.get_text(strip=True) for header in cr_table_washed.find('tr')]
-# clean_washed_headers = [header for header in washed_headers if header != '']
-
-# # add headers to dictionary
-# for i in range(0, len(clean_washed_headers)):
-#     costa_rica_dictionary[clean_washed_headers[i]] = []
-
 def headers_for_dictionary(soup_table, dictionary):
     headers = [header.get_text(strip=True) for header in soup_table.find('tr')]
     clean = [header for header in headers if header != '']
@@ -44,16 +31,7 @@ def headers_for_dictionary(soup_table, dictionary):
         dictionary[clean[i]] = []
     return clean
 
-auction_washed_headers = headers_for_dictionary(cr_auction_table_washed, costa_rica_all_auction_data_dict)
 
-
-
-# Extract data and add to dictionary
-# for row in cr_table_washed.find_all('tr')[1:]:
-#     cells = row.find_all('td')
-#     for i, cell in enumerate(cells):
-#         cell_data = cell.find('div', class_='mtr-cell-content').get_text(strip=True)
-#         costa_rica_dictionary[clean_washed_headers[i]].append(cell_data)
 
 def extract_data_from_table(soup_table, headers, dictionary):
     for row in soup_table.find_all('tr')[1:]:
@@ -72,7 +50,7 @@ extract_data_from_table(cr_table_experimental, experimental_table_headers, costa
 natural_honey_headers = headers_for_dictionary(cr_table_natural_honey, costa_rica_natural_honey_dictionary)
 extract_data_from_table(cr_table_natural_honey, natural_honey_headers, costa_rica_natural_honey_dictionary)
 
-
+auction_washed_headers = headers_for_dictionary(cr_auction_table_washed, costa_rica_all_auction_data_dict)
 extract_data_from_table(cr_auction_table_washed, auction_washed_headers, costa_rica_all_auction_data_dict)
 
 # Removing value in list that is identical to the key. This is because of extracting data from all three tables at once rather than
@@ -94,20 +72,10 @@ def add_table_dict_data(add_to_dictionary, key_list, data_list):
 add_table_dict_data(costa_rica_all_auction_data_dict, ['COUNTRY', 'YEAR'], ['Costa Rica', '2024'])
     
 
-# costa_rica_all_auction_data_dict['COUNTRY'] = ['Costa Rica'] * len(next(iter(costa_rica_all_auction_data_dict.values())))
-# costa_rica_all_auction_data_dict['YEAR'] = ['2024']
-
-
 for key in costa_rica_washed_dictionary.keys():
     costa_rica_all_data_dict[key] = costa_rica_washed_dictionary[key] + costa_rica_experimental_dictionary[key] + costa_rica_natural_honey_dictionary[key]
 
-costa_rica_all_data_dict['COUNTRY'] = ['Costa Rica'] * len(next(iter(costa_rica_all_data_dict.values())))
-costa_rica_all_data_dict['YEAR'] = ['2024'] * len(next(iter(costa_rica_all_data_dict.values())))
-
-# print(costa_rica_all_data_dict)
-# print(costa_rica_washed_dictionary)
-# print(costa_rica_experimental_dictionary)
-# print(costa_rica_natural_honey_dictionary)
+add_table_dict_data(costa_rica_all_data_dict, ['COUNTRY', 'YEAR'], ['Costa Rica', '2024'])
 
 with open('costa_rica_washed_table.csv', 'w', newline = '') as cr_table_washed:
     w = csv.DictWriter(cr_table_washed, fieldnames = costa_rica_washed_dictionary.keys())
@@ -121,10 +89,23 @@ with open('all_costa_rica_data_table.csv', 'w', newline='') as all_cr_data:
     rows = [dict(zip(costa_rica_all_data_dict.keys(), t)) for t in zip(*costa_rica_all_data_dict.values())]
     w.writerows(rows)
 
+def write_csv_file(csv_file_title, _dictionary):
+    with open(csv_file_title, 'w', newline = '') as csv_file:
+        w = csv.DictWriter(csv_file, fieldnames=_dictionary.keys())
+        w.writeheader()
+        rows = [dict(zip(_dictionary.keys(), t)) for t in zip(*_dictionary.values())]
+        w.writerows(rows)
+    return
+
+write_csv_file('costa_rica_auction_table.csv', costa_rica_all_auction_data_dict)
+
+all_auction_df = pd.read_csv('costa_rica_auction_table.csv')
+print(all_auction_df)
+
 all_cr_df = pd.read_csv('all_costa_rica_data_table.csv')
 # print(all_cr_df)
 
 df = pd.read_csv('costa_rica_washed_table.csv')
 # print(df)
 
-print(costa_rica_all_auction_data_dict)
+# print(costa_rica_all_auction_data_dict)
