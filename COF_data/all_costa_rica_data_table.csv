@@ -1,34 +1,34 @@
-RANK,SCORE,FARM /CWS,FARMER / REPRESENTATIVE,PROCESS,VARIETY,REGION,WEIGHT (Kg),COUNTRY,YEAR
-1A,92.04,Santa Teresa,Roger Ureña Hidalgo,Washed,Geisha,Tarrazú,150.00,Costa Rica,2024
-1B,92.04,Santa Teresa,Roger Ureña Hidalgo,Washed,Geisha,Tarrazú,150.00,Costa Rica,2024
-2,90.65,El Cedro – Hacienda San Isidro Labrador,Johel Monge Naranjo,Washed,Geisha,Tarrazú,555.00,Costa Rica,2024
-3,90.46,Quebrada Grande,Luis Diego Calderon Castillo,Washed,San Roque,Tarrazú,360.00,Costa Rica,2024
-4,89.5,Hacienda Copey – Itadaki,"Daito Giken Costa Rica, S.A.",Washed,Geisha,Tarrazú,345.00,Costa Rica,2024
-5,88.69,Río Blanco,Alejandra Cordero Solano,Washed,Catuai,Tarrazú,285.00,Costa Rica,2024
-6,88.62,Don Cayito,Maria Lourdes Castillo Umaña,Washed,Typica,Tarrazú,345.00,Costa Rica,2024
-7,88.31,Volcan Azul Hacienda Colima,Alejo Castro Kahle,Washed,Otros,Valle Occidental,345.00,Costa Rica,2024
-8,87.04,San Martín,Lisbeth Venegas Gamboa,Washed,Geisha,Tarrazú,300.00,Costa Rica,2024
-1A,91.19,Finca Voo,Cafe Solis&Cordero S.A.,Fermentation,Catuai,Tarrazú,105.00,Costa Rica,2024
-1B,91.19,Finca Voo,Cafe Solis&Cordero S.A.,Fermentation,Catuai,Tarrazú,120.00,Costa Rica,2024
-2,90.81,Don Dario – Hacienda San Isidro Labrador,Matias Monge Leiva,Fermentation,Geisha,Tarrazú,420.00,Costa Rica,2024
-3,90.42,Monte Llano Bonito El Kinkajou,Francisco Alejandro Mena Vilchez,Fermentation,San Roque,Valle Occidental,345.00,Costa Rica,2024
-4,90.08,Fcj Volcan Azul,Fernando Castro Jimenez,Fermentation,Geisha,Valle Occidental,270.00,Costa Rica,2024
-5,88.62,El Bosque Geisha,Alessia Mena Castro,Fermentation,Geisha,Valle Occidental,300.00,Costa Rica,2024
-6,87.58,Fcj Volcan Azul – Cipresal,Fernando Castro Jimenez,Fermentation,Geisha,Valle Occidental,270.00,Costa Rica,2024
-1A,93.62,Don Cayito,Luis Ricardo Calderon Madrigal,Honey,Geisha,Tarrazú,165.00,Costa Rica,2024
-1B,93.62,Don Cayito,Luis Ricardo Calderon Madrigal,Honey,Geisha,Tarrazú,165.00,Costa Rica,2024
-2,92,La Torre,Jhon Alvarado Abarca,Black Honey,Geisha,Brunca,270.00,Costa Rica,2024
-3,91.42,Don Joel,Allan Alfredo Oviedo Rodriguez,Semi lavado,San Roque,Valle Occidental,405.00,Costa Rica,2024
-4,91.19,La Esmeralda,Ivan Daniel Gutierrez Ureña,Honey,Geisha,Tarrazú,285.00,Costa Rica,2024
-5,89.04,La Ele,Alberth Monge Segura,Honey,Geisha,Tarrazú,555.00,Costa Rica,2024
-6,89.04,Don Elí,Jacob Montero Cordero,Natural,Geisha,Tarrazú,300.00,Costa Rica,2024
-7,89.04,Don Mayo Tucanes,Luis Pablo Bonilla Solís,Natural,Geisha,Tarrazú,435.00,Costa Rica,2024
-8,88.96,Quebrada Grande,Lizeth Calderon Castillo,Natural,San Roque,Tarrazú,285.00,Costa Rica,2024
-9,88.81,La Bandera,Diego Hidalgo Umana,Natural,Geisha,Tarrazú,225.00,Costa Rica,2024
-10,88.62,Hacienda Copey,"Daito Giken Costa Rica, S.A.",Honey,Geisha,Tarrazú,345.00,Costa Rica,2024
-11,88.58,El Cedro – Hacienda San Isidro Labrador,Johel Monge Naranjo,Honey,Geisha,Tarrazú,555.00,Costa Rica,2024
-12,88.42,Pie San,Oscar Adolfo Monge Ureña,Honey,Geisha,Tarrazú,345.00,Costa Rica,2024
-13,88.35,El Chizo,Agricola Chizo,Semi lavado,San Roque,Valle Occidental,405.00,Costa Rica,2024
-14,88.35,Las Nubes,Roberto Mata Naranjo,Natural,Geisha,Tarrazú,315.00,Costa Rica,2024
-15,88.35,Don Mayo La Loma,Héctor Bonilla Cruz,Honey,Geisha,Tarrazú,300.00,Costa Rica,2024
-16,88.31,Finca Voo,Cafe Solis&Cordero S.A.,Natural,Catuai,Tarrazú,285.00,Costa Rica,2024
+RANK,SCORE,FARM /CWS,FARMER / REPRESENTATIVE,PROCESS,VARIETY,REGION,WEIGHT (Kg),CONTINENT,COUNTRY,YEAR
+1A,92.04,Santa Teresa,Roger Ureña Hidalgo,Washed,Geisha,Tarrazú,150.00,North America (Central America),Costa Rica,2024
+1B,92.04,Santa Teresa,Roger Ureña Hidalgo,Washed,Geisha,Tarrazú,150.00,North America (Central America),Costa Rica,2024
+2,90.65,El Cedro – Hacienda San Isidro Labrador,Johel Monge Naranjo,Washed,Geisha,Tarrazú,555.00,North America (Central America),Costa Rica,2024
+3,90.46,Quebrada Grande,Luis Diego Calderon Castillo,Washed,San Roque,Tarrazú,360.00,North America (Central America),Costa Rica,2024
+4,89.5,Hacienda Copey – Itadaki,"Daito Giken Costa Rica, S.A.",Washed,Geisha,Tarrazú,345.00,North America (Central America),Costa Rica,2024
+5,88.69,Río Blanco,Alejandra Cordero Solano,Washed,Catuai,Tarrazú,285.00,North America (Central America),Costa Rica,2024
+6,88.62,Don Cayito,Maria Lourdes Castillo Umaña,Washed,Typica,Tarrazú,345.00,North America (Central America),Costa Rica,2024
+7,88.31,Volcan Azul Hacienda Colima,Alejo Castro Kahle,Washed,Otros,Valle Occidental,345.00,North America (Central America),Costa Rica,2024
+8,87.04,San Martín,Lisbeth Venegas Gamboa,Washed,Geisha,Tarrazú,300.00,North America (Central America),Costa Rica,2024
+1A,91.19,Finca Voo,Cafe Solis&Cordero S.A.,Fermentation,Catuai,Tarrazú,105.00,North America (Central America),Costa Rica,2024
+1B,91.19,Finca Voo,Cafe Solis&Cordero S.A.,Fermentation,Catuai,Tarrazú,120.00,North America (Central America),Costa Rica,2024
+2,90.81,Don Dario – Hacienda San Isidro Labrador,Matias Monge Leiva,Fermentation,Geisha,Tarrazú,420.00,North America (Central America),Costa Rica,2024
+3,90.42,Monte Llano Bonito El Kinkajou,Francisco Alejandro Mena Vilchez,Fermentation,San Roque,Valle Occidental,345.00,North America (Central America),Costa Rica,2024
+4,90.08,Fcj Volcan Azul,Fernando Castro Jimenez,Fermentation,Geisha,Valle Occidental,270.00,North America (Central America),Costa Rica,2024
+5,88.62,El Bosque Geisha,Alessia Mena Castro,Fermentation,Geisha,Valle Occidental,300.00,North America (Central America),Costa Rica,2024
+6,87.58,Fcj Volcan Azul – Cipresal,Fernando Castro Jimenez,Fermentation,Geisha,Valle Occidental,270.00,North America (Central America),Costa Rica,2024
+1A,93.62,Don Cayito,Luis Ricardo Calderon Madrigal,Honey,Geisha,Tarrazú,165.00,North America (Central America),Costa Rica,2024
+1B,93.62,Don Cayito,Luis Ricardo Calderon Madrigal,Honey,Geisha,Tarrazú,165.00,North America (Central America),Costa Rica,2024
+2,92,La Torre,Jhon Alvarado Abarca,Black Honey,Geisha,Brunca,270.00,North America (Central America),Costa Rica,2024
+3,91.42,Don Joel,Allan Alfredo Oviedo Rodriguez,Semi lavado,San Roque,Valle Occidental,405.00,North America (Central America),Costa Rica,2024
+4,91.19,La Esmeralda,Ivan Daniel Gutierrez Ureña,Honey,Geisha,Tarrazú,285.00,North America (Central America),Costa Rica,2024
+5,89.04,La Ele,Alberth Monge Segura,Honey,Geisha,Tarrazú,555.00,North America (Central America),Costa Rica,2024
+6,89.04,Don Elí,Jacob Montero Cordero,Natural,Geisha,Tarrazú,300.00,North America (Central America),Costa Rica,2024
+7,89.04,Don Mayo Tucanes,Luis Pablo Bonilla Solís,Natural,Geisha,Tarrazú,435.00,North America (Central America),Costa Rica,2024
+8,88.96,Quebrada Grande,Lizeth Calderon Castillo,Natural,San Roque,Tarrazú,285.00,North America (Central America),Costa Rica,2024
+9,88.81,La Bandera,Diego Hidalgo Umana,Natural,Geisha,Tarrazú,225.00,North America (Central America),Costa Rica,2024
+10,88.62,Hacienda Copey,"Daito Giken Costa Rica, S.A.",Honey,Geisha,Tarrazú,345.00,North America (Central America),Costa Rica,2024
+11,88.58,El Cedro – Hacienda San Isidro Labrador,Johel Monge Naranjo,Honey,Geisha,Tarrazú,555.00,North America (Central America),Costa Rica,2024
+12,88.42,Pie San,Oscar Adolfo Monge Ureña,Honey,Geisha,Tarrazú,345.00,North America (Central America),Costa Rica,2024
+13,88.35,El Chizo,Agricola Chizo,Semi lavado,San Roque,Valle Occidental,405.00,North America (Central America),Costa Rica,2024
+14,88.35,Las Nubes,Roberto Mata Naranjo,Natural,Geisha,Tarrazú,315.00,North America (Central America),Costa Rica,2024
+15,88.35,Don Mayo La Loma,Héctor Bonilla Cruz,Honey,Geisha,Tarrazú,300.00,North America (Central America),Costa Rica,2024
+16,88.31,Finca Voo,Cafe Solis&Cordero S.A.,Natural,Catuai,Tarrazú,285.00,North America (Central America),Costa Rica,2024

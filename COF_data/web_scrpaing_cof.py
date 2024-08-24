@@ -75,7 +75,7 @@ add_table_dict_data(costa_rica_all_auction_data_dict, ['COUNTRY', 'YEAR'], ['Cos
 for key in costa_rica_washed_dictionary.keys():
     costa_rica_all_data_dict[key] = costa_rica_washed_dictionary[key] + costa_rica_experimental_dictionary[key] + costa_rica_natural_honey_dictionary[key]
 
-add_table_dict_data(costa_rica_all_data_dict, ['COUNTRY', 'YEAR'], ['Costa Rica', '2024'])
+add_table_dict_data(costa_rica_all_data_dict, ['CONTINENT', 'COUNTRY', 'YEAR'], ['North America (Central America)', 'Costa Rica', '2024'])
 
 with open('costa_rica_washed_table.csv', 'w', newline = '') as cr_table_washed:
     w = csv.DictWriter(cr_table_washed, fieldnames = costa_rica_washed_dictionary.keys())
@@ -100,7 +100,7 @@ def write_csv_file(csv_file_title, _dictionary):
 write_csv_file('costa_rica_auction_table.csv', costa_rica_all_auction_data_dict)
 
 all_auction_df = pd.read_csv('costa_rica_auction_table.csv')
-print(all_auction_df)
+# print(all_auction_df)
 
 all_cr_df = pd.read_csv('all_costa_rica_data_table.csv')
 # print(all_cr_df)
