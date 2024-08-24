@@ -7,14 +7,27 @@ import pandas as pd
 costa_rica_2024_results_webpage = requests.get('https://allianceforcoffeeexcellence.org/costa-rica-2024/#coe-results')
 costa_rica_2024_soup = BeautifulSoup(costa_rica_2024_results_webpage.content, 'html.parser')
 
+costa_rica_all_data_dict = {}
+costa_rica_all_auction_data_dict = {}
+
 costa_rica_washed_dictionary = {}
 costa_rica_experimental_dictionary = {}
 costa_rica_natural_honey_dictionary = {}
 
-# Find the table
+# Find the table for results
 cr_table_washed = costa_rica_2024_soup.find('table', class_='experimental mtr-table mtr-tr-td')
 cr_table_experimental = costa_rica_2024_soup.find('table', class_='redd mtr-table mtr-tr-td')
 cr_table_natural_honey = costa_rica_2024_soup.find('table', class_='dry mtr-table mtr-tr-td')
+
+#Find the table for auction results
+cr_auction_table_washed = costa_rica_2024_soup.find('div', id='coe-auction-results')
+
+# print(cr_auction_table_washed)
+
+
+
+# print(cr_table_washed)
+
 
 # # Extract the headers and clean
 # washed_headers = [header.get_text(strip=True) for header in cr_table_washed.find('tr')]
@@ -30,6 +43,9 @@ def headers_for_dictionary(soup_table, dictionary):
     for i in range(0, len(clean)):
         dictionary[clean[i]] = []
     return clean
+
+auction_washed_headers = headers_for_dictionary(cr_auction_table_washed, costa_rica_all_auction_data_dict)
+
 
 
 # Extract data and add to dictionary
@@ -56,7 +72,12 @@ extract_data_from_table(cr_table_experimental, experimental_table_headers, costa
 natural_honey_headers = headers_for_dictionary(cr_table_natural_honey, costa_rica_natural_honey_dictionary)
 extract_data_from_table(cr_table_natural_honey, natural_honey_headers, costa_rica_natural_honey_dictionary)
 
-costa_rica_all_data_dict = {}
+
+extract_data_from_table(cr_auction_table_washed,auction_washed_headers, costa_rica_all_auction_data_dict)
+
+list_keys = list(costa_rica_all_auction_data_dict.keys())
+print(list_keys)
+
 
 for key in costa_rica_washed_dictionary.keys():
     costa_rica_all_data_dict[key] = costa_rica_washed_dictionary[key] + costa_rica_experimental_dictionary[key] + costa_rica_natural_honey_dictionary[key]
@@ -82,7 +103,9 @@ with open('all_costa_rica_data_table.csv', 'w', newline='') as all_cr_data:
     w.writerows(rows)
 
 all_cr_df = pd.read_csv('all_costa_rica_data_table.csv')
-print(all_cr_df)
+# print(all_cr_df)
 
 df = pd.read_csv('costa_rica_washed_table.csv')
 # print(df)
+
+print(costa_rica_all_auction_data_dict)
