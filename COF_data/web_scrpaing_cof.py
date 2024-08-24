@@ -226,8 +226,6 @@ class Extract_All_Data:
     
 guatemala_data = Extract_All_Data('https://allianceforcoffeeexcellence.org/guatemala-2024/#coe-results', 'coe-results', 'guatemala_results_table_2024.csv')
 guatemala_results = guatemala_data.scrape(['COUNTRY', 'CONTINENT', 'YEAR'], ['Guatemala', 'North America (Central America)', '2024'])
-# guatemala_data.add_extra_data(['COUNTRY', 'CONTINENT', 'YEAR'], ['Guatemala', 'North America (Central America)', '2024'])
-
 guatemala_auction_data = Extract_All_Data('https://allianceforcoffeeexcellence.org/guatemala-2024/', 'coe-auction-results', 'guatemala_auction_table_2024.csv')
 guatemala_auction_results = guatemala_auction_data.scrape(['COUNTRY', 'YEAR'],['Guatemala', '2024'])
 
@@ -235,6 +233,8 @@ el_salvador_data = Extract_All_Data('https://allianceforcoffeeexcellence.org/el-
 el_salvador_results = el_salvador_data.scrape(['COUNTRY', 'CONTINENT', 'YEAR'], ['El Salvador', 'North America (Central America)', '2024'])
 el_salvador_auction_data = Extract_All_Data('https://allianceforcoffeeexcellence.org/el-salvador-2024/', 'coe-auction-results', 'el_salvador_auction_results_2024.csv')
 el_salvador_auction_results = el_salvador_auction_data.scrape(['COUNTRY', 'YEAR'], ['El Salvador', '2024'])
+
+
 
 
 # print(guatemala_auction_results) # Debugging
