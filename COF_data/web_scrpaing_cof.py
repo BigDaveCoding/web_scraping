@@ -153,3 +153,54 @@ write_csv_file('el_salvador_auction_results_2024.csv', el_salvador_all_auction_d
 
 # print(el_salvador_all_results_dict) #Debugging
 # print(el_salvador_all_auction_dict) #Debugging
+class Extract_All_Data:
+    def __init__(self, webpage_to_scrape_str, id_str):
+        self.webpage_to_scrape_str = webpage_to_scrape_str
+        self.data_dictionary = {}
+        self.id_str = id_str
+    
+    def create_soup(self):
+        webpage = requests.get(self.webpage_to_scrape_str)
+        soup = BeautifulSoup(webpage.content, 'html.parser')
+        return soup
+    
+    def find_table(self, soup):
+        table = soup.find('div', id=self.id_str)
+        return table
+    
+    def assign_headers(self, soup_table):
+        headers = []
+        header_row = soup_table.find('tr')
+        if header_row:
+            headers = [header.get_text(strip=True) for header in header_row.find_all(['th', 'td'])]
+            for header in headers:
+                self.data_dictionary[header] = []
+        return headers
+    
+    def extract_data_from_table(self, soup_table, headers):
+        rows = soup_table.find_all('tr')[1:]  # Skip header row
+        for row in rows:
+            cells = row.find_all('td')
+            for i, cell in enumerate(cells):
+                cell_data = cell.get_text(strip=True)
+                if i < len(headers):  # Ensure cell aligns with a header
+                    self.data_dictionary[headers[i]].append(cell_data)
+    
+    def clean_dictionary(self):
+        for key, value in self.data_dictionary.items():
+            self.data_dictionary[key] = [val for val in value if val != key]
+    
+    def scrape(self):
+        soup = self.create_soup()
+        table = self.find_table(soup)
+        if table:
+            headers = self.assign_headers(table)
+            if headers:
+                self.extract_data_from_table(table, headers)
+        self.clean_dictionary()
+        return self.data_dictionary
+
+    
+guatemala_data = Extract_All_Data('https://allianceforcoffeeexcellence.org/guatemala-2024/#coe-results', 'coe-results')
+guatemala_results = guatemala_data.scrape()
+print(guatemala_results)
