@@ -75,8 +75,27 @@ extract_data_from_table(cr_table_natural_honey, natural_honey_headers, costa_ric
 
 extract_data_from_table(cr_auction_table_washed, auction_washed_headers, costa_rica_all_auction_data_dict)
 
-list_keys = list(costa_rica_all_auction_data_dict.keys())
-print(list_keys)
+# Removing value in list that is identical to the key. This is because of extracting data from all three tables at once rather than
+# individually
+for key, values in costa_rica_all_auction_data_dict.items():
+    costa_rica_all_auction_data_dict[key] = [val for val in values if val != key]
+# Dont need the company name data for the table so using .pop to remove key and values.
+costa_rica_all_auction_data_dict.pop('COMPANY NAME')
+
+# Adding a key 'COUNTRY' and value of 'Costa Rica' to auction dictionary
+
+def add_table_dict_data(add_to_dictionary, key_list, data_list):
+    for key, value in zip(key_list, data_list):
+        if key not in add_to_dictionary:
+            add_to_dictionary[key] = [value] * len(next(iter(add_to_dictionary.values())))
+        else:
+            add_to_dictionary[key].extend([value]) * len(next(iter(add_to_dictionary.values())))
+
+add_table_dict_data(costa_rica_all_auction_data_dict, ['COUNTRY', 'YEAR'], ['Costa Rica', '2024'])
+    
+
+# costa_rica_all_auction_data_dict['COUNTRY'] = ['Costa Rica'] * len(next(iter(costa_rica_all_auction_data_dict.values())))
+# costa_rica_all_auction_data_dict['YEAR'] = ['2024']
 
 
 for key in costa_rica_washed_dictionary.keys():
